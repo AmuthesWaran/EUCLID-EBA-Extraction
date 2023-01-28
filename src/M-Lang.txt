@@ -1,0 +1,91 @@
+Columns name from JSON:
+
+"CA_OwnerID"
+"EntityCode"
+"EntityType"
+"Properties"
+
+	"ENT_COD"
+	"ENT_COD_TYP"
+     "ENT_NAT_REF_COD"
+     "ENT_NAM"
+	"ENT_COU_RES"
+     "ENT_TOW_CIT_RES"
+     "ENT_AUT"
+	"EEA_DEP_GUA_SCH"
+	"COM_AUT"
+
+"__EBA_EntityVersion"
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Columns:
+
+CA_OwnerID
+EntityCode
+EntityType
+Properties
+
+	ENT_COD
+	ENT_COD_TYP
+     ENT_NAT_REF_COD
+     ENT_NAM
+	ENT_COU_RES
+     ENT_TOW_CIT_RES
+     ENT_AUT
+	EEA_DEP_GUA_SCH
+	COM_AUT
+
+__EBA_EntityVersion
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+= Record.Field([Column1], "Name")
+= [Column1][Name]
+
+
+Add custom Column:
+Record.Field([Properties]{0},"ENT_COD")
+Record.Field([Properties]{1}, "ENT_COD_TYP")
+Record.Field([Properties]{2}, "ENT_NAT_REF_COD")
+Record.Field([Properties]{3}, "ENT_NAM")
+
+**
+Record.Field([Properties]{4}, "ENT_COU_RES") 
+Record.Field([Properties]{5}, "ENT_COU_RES")
+
+**
+Record.Field([Properties]{5}, "ENT_TOW_CIT_RES")
+Record.Field([Properties]{6}, "ENT_TOW_CIT_RES")
+
+
+
+**Error due to improper ordering
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+M-Language:
+
+let
+    Source = Json.Document(File.Contents("C:\Users\admin\Downloads\CRD Register.json")),
+    #"Converted to Table" = Record.ToTable(Source),
+    #"Expanded Value" = Table.ExpandListColumn(#"Converted to Table", "Value"),
+    #"Expanded Value1" = Table.ExpandRecordColumn(#"Expanded Value", "Value", {"_payload"}, {"_payload"}),
+    #"Expanded _payload" = Table.ExpandRecordColumn(#"Expanded Value1", "_payload", {"CA_OwnerID", "EntityCode", "EntityType", "Properties", "__EBA_EntityVersion"}, {"CA_OwnerID", "EntityCode", "EntityType", "Properties", "__EBA_EntityVersion"}),
+    #"ENT_COD" = Table.AddColumn(#"Expanded _payload", "ENT_COD", each Record.Field([Properties]{0},"ENT_COD")),
+    #"ENT_COD_TYP" = Table.AddColumn(#"ENT_COD", "ENT_COD_TYP", each Record.Field([Properties]{1}, "ENT_COD_TYP")),
+    #"ENT_NAT_REF_COD" = Table.AddColumn(#"ENT_COD_TYP", "ENT_NAT_REF_COD", each Record.Field([Properties]{2}, "ENT_NAT_REF_COD")),
+    #"ENT_NAM" = Table.AddColumn(#"ENT_NAT_REF_COD", "ENT_NAM", each Record.Field([Properties]{3}, "ENT_NAM")),
+    #"ENT_COU_RES" = Table.AddColumn(#"ENT_NAM", "ENT_COU_RES", each Record.Field([Properties]{4}, "ENT_COU_RES")),
+    #"ENT_TOW_CIT_RES" = Table.AddColumn(#"ENT_COU_RES", "ENT_TOW_CIT_RES", each Record.Field([Properties]{5}, "ENT_TOW_CIT_RES")),
+    #"ENT_COU_RES2" = Table.AddColumn(ENT_TOW_CIT_RES, "ENT_COU_RES2", each Record.Field([Properties]{5}, "ENT_COU_RES")),
+    #"ENT_TOW_CIT_RES2" = Table.AddColumn(#"ENT_COU_RES2", "ENT_TOW_CIT_RES2", each Record.Field([Properties]{6}, "ENT_TOW_CIT_RES"))
+in
+    #"ENT_TOW_CIT_RES2"
+
