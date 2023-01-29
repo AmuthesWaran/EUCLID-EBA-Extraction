@@ -62,11 +62,7 @@ Record.Field([Properties]{5}, "ENT_TOW_CIT_RES")
 Record.Field([Properties]{6}, "ENT_TOW_CIT_RES")
 
 
-
-**Error due to improper ordering
-
-
-
+**Error due to ordering
 
 ----------------------------------------------------------------------------------------------------------------------------
 
