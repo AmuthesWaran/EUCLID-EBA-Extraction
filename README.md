@@ -1,3 +1,3 @@
-# EUCLID EBA Extraction
+# EUCLID EBA Web Scraping
 
-Web Scraping using devtools and Js to render as a table. 
+Web Scraping of a complex website using javascript and power query to render as a simple table.
