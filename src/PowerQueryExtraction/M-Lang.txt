@@ -1,3 +1,6 @@
+
+
+----------------------------------------------------------------------------------------------------------------------------
 Columns name from JSON:
 
 "CA_OwnerID"
@@ -9,6 +12,7 @@ Columns name from JSON:
 	"ENT_COD_TYP"
      "ENT_NAT_REF_COD"
      "ENT_NAM"
+	"ENT_NAM_NON_LAT"
 	"ENT_COU_RES"
      "ENT_TOW_CIT_RES"
      "ENT_AUT"
@@ -30,6 +34,7 @@ Properties
 	ENT_COD_TYP
      ENT_NAT_REF_COD
      ENT_NAM
+	ENT_NAM_NON_LAT
 	ENT_COU_RES
      ENT_TOW_CIT_RES
      ENT_AUT
@@ -85,3 +90,27 @@ let
 in
     #"ENT_TOW_CIT_RES2"
 
+
+----------------------------------------------------------------------------------------------------------------------------
+**column ordered as per website
+
+
+let
+    Source = Json.Document(File.Contents("C:\Users\admin\Downloads\CRD Register.json")),
+    #"Converted to Table" = Record.ToTable(Source),
+    #"Expanded Value" = Table.ExpandListColumn(#"Converted to Table", "Value"),
+    #"Expanded Value1" = Table.ExpandRecordColumn(#"Expanded Value", "Value", {"_payload"}, {"_payload"}),
+    #"Expanded _payload" = Table.ExpandRecordColumn(#"Expanded Value1", "_payload", {"CA_OwnerID", "EntityCode", "EntityType", "Properties", "__EBA_EntityVersion"}, {"CA_OwnerID", "EntityCode", "EntityType", "Properties", "__EBA_EntityVersion"}),
+    #"ENT_COD" = Table.AddColumn(#"Expanded _payload", "ENT_COD", each Record.Field([Properties]{0},"ENT_COD")),
+    #"ENT_COD_TYP" = Table.AddColumn(#"ENT_COD", "ENT_COD_TYP", each Record.Field([Properties]{1}, "ENT_COD_TYP")),
+    #"ENT_NAT_REF_COD" = Table.AddColumn(#"ENT_COD_TYP", "ENT_NAT_REF_COD", each Record.Field([Properties]{2}, "ENT_NAT_REF_COD")),
+    #"ENT_NAM" = Table.AddColumn(#"ENT_NAT_REF_COD", "ENT_NAM", each Record.Field([Properties]{3}, "ENT_NAM")),
+    #"ENT_COU_RES" = Table.AddColumn(#"ENT_NAM", "ENT_COU_RES", each Record.Field([Properties]{4}, "ENT_COU_RES")),
+    #"ENT_TOW_CIT_RES" = Table.AddColumn(#"ENT_COU_RES", "ENT_TOW_CIT_RES", each Record.Field([Properties]{5}, "ENT_TOW_CIT_RES")),
+    #"ENT_COU_RES2" = Table.AddColumn(ENT_TOW_CIT_RES, "ENT_COU_RES2", each Record.Field([Properties]{5}, "ENT_COU_RES")),
+    #"ENT_TOW_CIT_RES2" = Table.AddColumn(#"ENT_COU_RES2", "ENT_TOW_CIT_RES2", each Record.Field([Properties]{6}, "ENT_TOW_CIT_RES")),
+    #"Added Custom" = Table.AddColumn(ENT_TOW_CIT_RES2, "ENT_NAM_NON_LAT", each Record.Field([Properties]{4},"ENT_NAM_NON_LAT")),
+    #"Removed Columns" = Table.RemoveColumns(#"Added Custom",{"Name", "Properties", "__EBA_EntityVersion", "ENT_COD_TYP"}),
+    #"Reordered Columns" = Table.ReorderColumns(#"Removed Columns",{"CA_OwnerID", "EntityCode", "EntityType", "ENT_COD", "ENT_NAM", "ENT_NAM_NON_LAT", "ENT_NAT_REF_COD", "ENT_COU_RES", "ENT_COU_RES2", "ENT_TOW_CIT_RES", "ENT_TOW_CIT_RES2"})
+in
+    #"Reordered Columns"
