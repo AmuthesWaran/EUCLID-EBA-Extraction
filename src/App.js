@@ -5,7 +5,7 @@ import Extract from './components/Extract';
 function App() {
   return (
     <div>
-      
+
       <Extract />
 
     </div>
