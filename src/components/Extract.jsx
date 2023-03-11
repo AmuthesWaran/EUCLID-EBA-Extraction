@@ -1,11 +1,25 @@
 import Table from 'react-bootstrap/Table';
-import React from 'react';
+import React, { useState } from 'react';
 import jsonData from '../server/CreditInstitutionsRegister.json'
+import { FormControlLabel, Switch } from '@mui/material';
 
 const Extract = () => {
 
     console.log(jsonData)
     const data = jsonData.data
+
+    const [mode, setMode] = useState('dark')
+
+    function switchMode(e) {
+        // console.log(e.target.checked)
+        if (!e.target.checked) {
+            setMode('light')
+        }
+        else {
+            setMode('dark')
+        }
+    }
+
     // console.log(data);
 
     // const loadData = () => {
@@ -29,7 +43,23 @@ const Extract = () => {
         <div>
 
             {/* <Button variant="primary" onClick={loadData}>Click here</Button> */}
-            <Table striped bordered hover>
+
+            <FormControlLabel
+                value="start"
+                control={
+                    <Switch
+
+                        defaultChecked
+                        onChange={switchMode}
+                        inputProps={{ 'aria-label': 'controlled' }}
+                    />
+                }
+                label="Dark Mode"
+                labelPlacement="start"
+            />
+            <br />
+
+            <Table striped bordered hover variant={mode}>
                 {/* <table border="1"> */}
                 <thead>
                     <tr>
