@@ -1,5 +1,3 @@
-
-import './App.css';
 import Extract from './components/Extract';
 
 function App() {

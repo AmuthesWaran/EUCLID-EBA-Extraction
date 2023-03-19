@@ -1,0 +1,80 @@
+[
+    {
+        "_payload": {
+            "CA_OwnerID": "EE_FI",
+            "EntityCode": "529900GJOSVHI055QR67",
+            "EntityType": "CRD_CRE_INS",
+            "Properties": [
+                {
+                    "ENT_COD": "529900GJOSVHI055QR67"
+                },
+                {
+                    "ENT_COD_TYP": "LEI"
+                },
+                {
+                    "ENT_NAT_REF_COD": "10539549"
+                },
+                {
+                    "ENT_NAM": "AS LHV Pank"
+                },
+                {
+                    "ENT_COU_RES": "EE"
+                },
+                {
+                    "ENT_TOW_CIT_RES": "Tallinn"
+                },
+                {
+                    "ENT_AUT": [
+                        "2017-04-03"
+                    ]
+                },
+                {
+                    "EEA_DEP_GUA_SCH": "EE_TF"
+                },
+                {
+                    "COM_AUT": "EE_FI"
+                }
+            ],
+            "__EBA_EntityVersion": "20211231000000000"
+        }
+    },
+    {
+        "_payload": {
+            "CA_OwnerID": "HU_CBH",
+            "EntityCode": "529900UQUOJZZ3DCFS40",
+            "EntityType": "CRD_CRE_INS",
+            "Properties": [
+                {
+                    "ENT_COD": "529900UQUOJZZ3DCFS40"
+                },
+                {
+                    "ENT_COD_TYP": "LEI"
+                },
+                {
+                    "ENT_NAT_REF_COD": "12951659"
+                },
+                {
+                    "ENT_NAM": "SOPRON BANK Zartkoruen Mukodo Reszvenytarsasag"
+                },
+                {
+                    "ENT_NAM_NON_LAT": "SOPRON BANK Zártkörűen Működő Részvénytársaság"
+                },
+                {
+                    "ENT_COU_RES": "HU"
+                },
+                {
+                    "ENT_TOW_CIT_RES": "Sopron"
+                },
+                {
+                    "ENT_AUT": [
+                        "2019-04-23"
+                    ]
+                },
+                {
+                    "EEA_DEP_GUA_SCH": "HU_NDIF"
+                }
+            ],
+            "__EBA_EntityVersion": "20220701000000000"
+        }
+    }
+]

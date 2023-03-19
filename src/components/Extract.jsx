@@ -5,11 +5,14 @@ import { FormControlLabel, Switch } from '@mui/material';
 
 const Extract = () => {
 
-    console.log(jsonData)
+
     const data = jsonData.data
+    // console.log(jsonData)
+    // console.log(jsonData.data)
 
     const [mode, setMode] = useState('dark')
 
+    // Function for dark mode
     function switchMode(e) {
         // console.log(e.target.checked)
         if (!e.target.checked) {
@@ -60,10 +63,9 @@ const Extract = () => {
             <br />
 
             <Table striped bordered hover variant={mode}>
-                {/* <table border="1"> */}
                 <thead>
                     <tr>
-                        {/* <th>S.No</th> */}
+                        <th>S.No</th>
                         <th>Entity Code</th>
                         <th>Code Type</th>
                         <th>Name</th>
@@ -79,9 +81,11 @@ const Extract = () => {
                 </thead>
                 <tbody>
                     {
-                        data.map(d => (
+                        data.map((d, index) => (
+
                             <tr key={d._payload.Properties.map(p => p.ENT_COD)}>
                                 {/* <td>{d._payload.Properties}</td> */}
+                                <td>{index + 1}</td>
                                 <td>{d._payload.Properties.map(p => p.ENT_COD)}</td>
                                 <td>{d._payload.Properties.map(p => p.ENT_COD_TYP)}</td>
                                 <td>{d._payload.Properties.map(p => p.ENT_NAM)}</td>
@@ -98,7 +102,6 @@ const Extract = () => {
                         ))
                     }
                 </tbody>
-                {/* </table> */}
             </Table>
 
 

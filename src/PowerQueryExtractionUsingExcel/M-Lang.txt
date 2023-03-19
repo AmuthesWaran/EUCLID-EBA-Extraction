@@ -25,11 +25,12 @@ Columns name from JSON:
 
 Columns:
 
+// Type: 1
+
 CA_OwnerID
 EntityCode
 EntityType
 Properties
-
 	ENT_COD
 	ENT_COD_TYP
      ENT_NAT_REF_COD
@@ -40,7 +41,23 @@ Properties
      ENT_AUT
 	EEA_DEP_GUA_SCH
 	COM_AUT
+__EBA_EntityVersion
 
+// Type: 2
+
+CA_OwnerID
+EntityCode
+EntityType
+Properties
+	ENT_COD
+	ENT_COD_TYP
+     ENT_NAT_REF_COD
+	ENT_NAM
+	ENT_NAM_NON_LAT
+	ENT_COU_RES
+	ENT_TOW_CIT_RES
+	ENT_AUT
+	EEA_DEP_GUA_SCH
 __EBA_EntityVersion
 
 
@@ -67,7 +84,7 @@ Record.Field([Properties]{5}, "ENT_TOW_CIT_RES")
 Record.Field([Properties]{6}, "ENT_TOW_CIT_RES")
 
 
-**Error due to ordering
+**Error due to missing attributes in a particular record
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -93,7 +110,7 @@ in
 
 ----------------------------------------------------------------------------------------------------------------------------
 **column ordered as per website
-**Source to be changed as per json file stored in you machine
+**Source to be changed as per json file stored in your PC
 
 
 let
