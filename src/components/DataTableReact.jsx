@@ -1,12 +1,28 @@
 import React from 'react'
 import DataTable from 'react-data-table-component';
 import jsonData from '../server/CreditInstitutionsRegister.json'
+import { FormControlLabel, Switch } from '@mui/material';
+import { useState } from 'react';
+// import Export from "react-data-table-component"
 
 const DataTableReact = () => {
 
     console.log(jsonData.data)
 
     const data = jsonData.data
+
+    const [mode, setMode] = useState('dark')
+
+    // Function for dark mode
+    function switchMode(e) {
+        // console.log(e.target.checked)
+        if (!e.target.checked) {
+            setMode('default')
+        }
+        else {
+            setMode('dark')
+        }
+    }
 
     // const actionsMemo = React.useMemo(() => <Export onExport={() => downloadCSV(data)} />, [])
 
@@ -66,6 +82,20 @@ const DataTableReact = () => {
 
     return (
         <div>
+            <FormControlLabel
+                value="start"
+                control={
+                    <Switch
+
+                        defaultChecked
+                        onChange={switchMode}
+                        inputProps={{ 'aria-label': 'controlled' }}
+                    />
+                }
+                label="Dark Mode"
+                labelPlacement="start"
+            />
+            <br />
             <DataTable
                 columns={columns}
                 data={data}
@@ -74,6 +104,8 @@ const DataTableReact = () => {
                 highlightOnHover
                 pointerOnHover
                 selectableRowsHighlight
+                theme={mode}
+            // actions={actionsMemo}
 
             />
         </div>
