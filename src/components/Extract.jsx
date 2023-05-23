@@ -2,13 +2,38 @@ import Table from 'react-bootstrap/Table';
 import React, { useState } from 'react';
 import jsonData from '../server/CreditInstitutionsRegister.json'
 import { FormControlLabel, Switch } from '@mui/material';
+import { CSVLink } from 'react-csv';
+import { Button } from 'react-bootstrap';
 
 const Extract = () => {
+
+
+    const headers = [
+
+        { label: "Entity Code", key: "ENT_COD" },
+        { label: "Code Type", key: "accNo" },
+        { label: "Name", key: "dateOfTransaction" },
+        { label: "Non Latin Name", key: "transactionType" },
+        { label: "National ID", key: "depositAmount" },
+        { label: "Country", key: "withdrawalAmount" },
+        { label: "Town", key: "balance" },
+        { label: "EEA_DEP_GUA_SCH", key: "balance" },
+        { label: "COM_AUT", key: "balance" },
+        { label: "ENT_AUT", key: "balance" },
+
+
+    ]
 
 
     const data = jsonData.data
     // console.log(jsonData)
     // console.log(jsonData.data)
+
+    const downloadAsCsv = {
+        'data': data,
+        'headers': headers,
+        'filename': 'Recent Transactions.csv'
+    }
 
     const [mode, setMode] = useState('dark')
 
@@ -61,6 +86,9 @@ const Extract = () => {
                 labelPlacement="start"
             />
             <br />
+            <Button>
+                <CSVLink style={{ textDecoration: 'none', color: 'white' }} {...downloadAsCsv} >Export as CSV</CSVLink>
+            </Button>
 
             <Table striped bordered hover variant={mode}>
                 <thead>
