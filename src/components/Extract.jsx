@@ -10,16 +10,16 @@ const Extract = () => {
 
     const headers = [
 
-        { label: "Entity Code", key: "ENT_COD" },
-        { label: "Code Type", key: "accNo" },
-        { label: "Name", key: "dateOfTransaction" },
-        { label: "Non Latin Name", key: "transactionType" },
-        { label: "National ID", key: "depositAmount" },
-        { label: "Country", key: "withdrawalAmount" },
-        { label: "Town", key: "balance" },
-        { label: "EEA_DEP_GUA_SCH", key: "balance" },
-        { label: "COM_AUT", key: "balance" },
-        { label: "ENT_AUT", key: "balance" },
+        { label: "Entity Code", key: "_payload.Properties[0].ENT_COD" },
+        { label: "Code Type", key: "_payload.Properties[0].ENT_COD_TYP" },
+        { label: "Name", key: "_payload.Properties[0].ENT_NAM" },
+        { label: "Non Latin Name", key: "_payload.Properties[0].ENT_NAM_NON_LAT" },
+        { label: "National ID", key: "_payload.Properties[0].ENT_NAT_REF_COD" },
+        { label: "Country", key: "_payload.Properties[0].ENT_COU_RES" },
+        { label: "Town", key: "_payload.Properties[0].ENT_TOW_CIT_RES" },
+        { label: "EEA_DEP_GUA_SCH", key: "_payload.Properties[0].EEA_DEP_GUA_SCH" },
+        { label: "COM_AUT", key: "_payload.Properties[0].COM_AUT" },
+        { label: "ENT_AUT", key: "_payload.Properties[0].ENT_AUT[0]" },
 
 
     ]
