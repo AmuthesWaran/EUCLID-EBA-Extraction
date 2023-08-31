@@ -15,8 +15,8 @@ The below steps is to scrap data from EUCLID EBA website (https://euclid.eba.eur
 ![network-tab-2](https://github.com/AmuthesWaran/Java-Foundation/assets/79437368/ac4a09bd-7678-47e0-a274-a6681c502be1) 
 ![network-tab-3](https://github.com/AmuthesWaran/Java-Foundation/assets/79437368/000822d0-7dc4-4205-9b78-abc13df95851)
 
-6)	Paste it in the notepad and save as JSON file type refer “[CRD-Register-Sample-Data.json](src/PowerQueryExtractionUsingExcel/CRD-Register-Sample-Data.json)” and “[SampleDataTemplate.json](src/PowerQueryExtractionUsingExcel/SampleDataTemplate.json)” file to get more clarity and save appropriately.
+6)	Paste it in the notepad and save as JSON file type refer “[CRD-Register-Sample-Data.json](https://github.com/AmuthesWaran/EUCLID-EBA-Extraction/blob/main/src/PowerQueryExtractionUsingExcel/CRD-Register-Sample-Data.json)” and “[SampleDataTemplate.json](https://github.com/AmuthesWaran/EUCLID-EBA-Extraction/blob/main/src/PowerQueryExtractionUsingExcel/SampleDataTemplate.json)” file to get more clarity and save appropriately. <br>
 ![sample-json-file-placeholder](https://github.com/AmuthesWaran/Java-Foundation/assets/79437368/33c8416d-3b91-4c98-89ba-5c50f2614f9e)
 
-7)	Now you will be able to extract json data to a table using the “[PowerQueryExtraction.xlsx](src/PowerQueryExtractionUsingExcel/PowerQueryExtraction.xlsx)” file.
+7)	Now you will be able to extract json data to a table using the “[PowerQueryExtraction.xlsx](https://github.com/AmuthesWaran/EUCLID-EBA-Extraction/blob/main/src/PowerQueryExtractionUsingExcel/PowerQueryExtraction.xlsx)” file.
 8)	Change the path of your json file in power query advanced editor and refresh the query to get data in a table format.
